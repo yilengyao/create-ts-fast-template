@@ -5,7 +5,7 @@
   "author": "Yi leng Yao <yilengyao@gmail.com>",
   "license": "MIT",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
@@ -16,7 +16,7 @@
       },
       "require": {
         "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "default": "./dist/index.cjs"
       }
     }
   },
@@ -32,7 +32,8 @@
     "test:watch": "vitest",
     "typecheck": "tsc",
     "verify": "npm run typecheck && npm run test && npm run build",
-    "prepublishOnly": "npm run verify"
+    "prepublishOnly": "npm run verify",
+    "test:integration": "npx tsx src/__tests__/integration/${npm_config_file:-*.test.ts}"
   },
   "devDependencies": {
     "@types/node": "^22.15.29",
