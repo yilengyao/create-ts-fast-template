@@ -30,13 +30,24 @@ The project has the following files and directories:
 - `dist`: Directory containing generated files. The contents of this directory is published
 - `.github/workflows/ci.yml`: GitHub action that runs typechecks, tests and build
 
-## Next steps
+## Publish to NPM via github action
+Create an account on https://www.npmjs.com/
+create a token
 
-1. Implement your library within `src`. Add tests if you take pride in being a developer
-2. Modify `package.json` – update `name`, `version`, `author` and any other relevant fields
-3. Update `README.md`
-4. `npm publish`. You will have to login to npm if you aren't already logged in
-5. Profit!
+On npm go to settings -> secret and variables -> actions -> new repository secret
+then add your npm secret under the key NODE_AUTH_TOKEN
+
+then in your package.json add
+```json
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<github org or username>/<repo name>.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+```
 
 ## Commands
 
